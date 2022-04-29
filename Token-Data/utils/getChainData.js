@@ -14,9 +14,8 @@ const setupWeb3 = async () => {
   
   // Multiple Binance Smart Chain endpoints are supplied in case one is down. More endpoints can be found at https://docs.binance.org/smart-chain/developer/rpc.html
   const bsc_endpoints = [
-    "https://bsc-dataseed.binance.org/",
-    "https://bsc-dataseed1.defibit.io/",
-    "https://bsc-dataseed1.ninicoin.io/",
+    "https://mainnet.infura.io/v3/0b4f5ada1c0241a6a5b650437e9c58e9",
+    "wss://mainnet.infura.io/ws/v3/0b4f5ada1c0241a6a5b650437e9c58e9",
   ]
 
 

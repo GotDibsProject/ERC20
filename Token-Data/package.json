@@ -1,6 +1,6 @@
 {
-  "name": "Token-Data-API",
-  "version": "1.0.0",
+  "name": "Token-Data",
+  "version": "1.0.069",
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/noahniuwa/Token-Data-API.git"
+    "url": "git+https://github.com/GotDibsProject/ERC20/tree/main/Token-Data.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/noahniuwa/Token-Data-API/issues"
+    "url": "https://github.com/GotDibsProject/ERC20/tree/main/Token-Data/issues"
   },
-  "homepage": "https://github.com/noahniuwa/Token-Data-API#readme",
+  "homepage": "https://github.com/GotDibsProject/ERC20/tree/main/Token-Data#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "coingecko-api": "^1.0.10",

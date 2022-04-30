@@ -8,6 +8,7 @@ const db = require('./utils/db')
 
 const projectTwoRoutes = require('./routes/projectTwo')
 const projectOneRoutes = require('./routes/projectOne')
+const circulatingSupply = require('./routes/circulatingSupply');
 const getChainData = require("./utils/getChainData")
 const removeTrailingSlash = require('./middleware/removeTrailingSlash');
 
@@ -15,7 +16,7 @@ const removeTrailingSlash = require('./middleware/removeTrailingSlash');
 const PORT = process.env.PORT || 3001
 
 // Call getChainData here to begin chain data update loop and start caching new data to database
-getChainData() 
+getChainData()
 
 const app = express()
 
@@ -24,7 +25,7 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100 // limit each IP to 100 requests per windowMs
 });
- 
+
 //  apply to all requests
 app.use(cors())
 app.use(bodyParser.text())
@@ -55,7 +56,7 @@ app.use('/v1/projectTwo', async (req, res, next) => {
   try {
     await db.getCachedprojectTwoData(client).then(result => req.chainData = result)
   }
-  catch(err){
+  catch (err) {
     console.log("error getting data")
     console.log(err)
   }
@@ -68,7 +69,7 @@ app.use('/v1/projectOne', async (req, res, next) => {
   try {
     await db.getCachedprojectOneData(client).then(result => req.chainData = result)
   }
-  catch(err){
+  catch (err) {
     console.log("error getting data")
     console.log(err)
   }
@@ -77,9 +78,10 @@ app.use('/v1/projectOne', async (req, res, next) => {
 
 app.use('/v1/projectOne', projectOneRoutes)
 app.use('/v1/projectTwo', projectTwoRoutes)
+app.use('/v1/api', circulatingSupply)
 
 app.use((req, res) => {
-  res.status(404).json({error: true, message: "Resource not found"})
+  res.status(404).json({ error: true, message: "Resource not found" })
 })
 
 app.listen(PORT)
